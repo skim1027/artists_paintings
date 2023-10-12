@@ -33,6 +33,8 @@ RSpec.describe 'paintings index page', type: :feature do
         expect(page).to have_content(@painting_4.year_painted)
         expect(page).to have_content(@painting_4.oil_painting)
       end
+
+      
     end
 
     describe 'when I visit /paintings/:id' do

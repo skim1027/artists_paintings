@@ -37,27 +37,10 @@ RSpec.describe 'artists index page', type: :feature do
         # I see that records are ordered by most recently created first
         
         visit "/artists"
-        save_and_open_page
         expect(@artist_4.name).to appear_before(@artist_3.name)
         expect(@artist_3.name).to appear_before(@artist_2.name)
         expect(@artist_2.name).to appear_before(@artist_1.name)
         expect(@artist_1.name).to_not appear_before(@artist_4.name)
-      end
-      
-    end
-
-    describe 'when I visit /artists/:id' do
-      it 'shows the name of artist with that id including the attributes' do
-        # As a visitor
-        # When I visit '/parents/:id'
-        # Then I see the parent with that id including the parent's attributes
-        # (data from each column that is on the parent table)
-        visit "/artists/#{@artist_1.id}"
-        expect(page).to have_content(@artist_1.name)
-        expect(page).to have_content(@artist_1.year_born)
-        expect(page).to have_content(@artist_1.country)
-        expect(page).to have_content(@artist_1.alive)
-        expect(page).to_not have_content(@artist_2.name)
       end
     end
   end
