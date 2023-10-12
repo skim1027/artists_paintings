@@ -30,6 +30,21 @@ RSpec.describe 'paintings index page', type: :feature do
         expect(page).to have_content(@painting_4.oil_painting)
       end
     end
+
+    describe 'when I visit /paintings/:id' do
+      it 'shows the paintings with that ID an attributes' do
+        # As a visitor
+        # When I visit '/child_table_name/:id'
+        # Then I see the child with that id including the child's attributes
+        # (data from each column that is on the child table)
+
+        visit "/paintings/#{@painting_1.id}"
+        expect(page).to have_content(@painting_1.name)
+        expect(page).to have_content(@painting_1.year_painted)
+        expect(page).to have_content(@painting_1.oil_painting)
+        expect(page).to_not have_content(@painting_2.name)
+      end
+    end
   end
 
 end
