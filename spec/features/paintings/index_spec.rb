@@ -2,12 +2,16 @@ require 'rails_helper'
 
 RSpec.describe 'paintings index page', type: :feature do
   before :each do
-    @painting_1 = Painting.create!(name: "Mona Lisa", year_painted: 1516, oil_painting: true)
-    @painting_2 = Painting.create!(name: "The Last Supper", year_painted: 1498, oil_painting: false)
-    @painting_3 = Painting.create!(name: "La Toilette", year_painted: 1886, oil_painting: false)
-    @painting_4 = Painting.create!(name: "Blue Dancers", year_painted: 1884, oil_painting: true)
-    @painting_5 = Painting.create!(name: "Flowers", year_painted: 1991, oil_painting: false)
-    @painting_6 = Painting.create!(name: "Deep in the Water", year_painted: 2018, oil_painting: true)
+    @artist_1 = Artist.create!(name: "Leonardo da Vinci", year_born: 1452, country: 'Italy', alive: false)
+    @artist_2 = Artist.create!(name: "Edgar Degas", year_born: 1834, country: 'France', alive: false)
+    @artist_3 = Artist.create!(name: "Yayoi Kusama", year_born: 1929, country: 'Japan', alive: true)
+    @artist_4 = Artist.create!(name: "Beatrice Modisett", year_born: 1985, country: 'US', alive: true)
+    @painting_1 = @artist_1.paintings.create!(name: "Mona Lisa", year_painted: 1516, oil_painting: true)
+    @painting_2 = @artist_1.paintings.create!(name: "The Last Supper", year_painted: 1498, oil_painting: false)
+    @painting_3 = @artist_2.paintings.create!(name: "La Toilette", year_painted: 1886, oil_painting: false)
+    @painting_4 = @artist_2.paintings.create!(name: "Blue Dancers", year_painted: 1884, oil_painting: true)
+    @painting_5 = @artist_3.paintings.create!(name: "Flowers", year_painted: 1991, oil_painting: false)
+    @painting_6 = @artist_4.paintings.create!(name: "Deep in the Water", year_painted: 2018, oil_painting: true)
   end
 
   describe 'as a user' do

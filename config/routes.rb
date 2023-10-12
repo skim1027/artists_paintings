@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get "/artists/:id", to: "artists#show"
   get "/paintings", to: "paintings#index"
   get "/paintings/:id", to: "paintings#show"
+  get "/artists/:artist_id/paintings", to: "artist_paintings#index"
 end
