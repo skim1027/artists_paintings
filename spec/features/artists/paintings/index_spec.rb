@@ -17,7 +17,6 @@ RSpec.describe 'artists index page', type: :feature do
         # (data from each column that is on the child table)
         
         visit "/artists/#{@artist_1.id}/paintings"
-        save_and_open_page
         expect(page).to have_content(@painting_1.name)
         expect(page).to have_content(@painting_1.year_painted)
         expect(page).to have_content(@painting_1.oil_painting)
