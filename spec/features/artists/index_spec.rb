@@ -22,7 +22,28 @@ RSpec.describe 'artists index page', type: :feature do
         expect(page).to have_content(@artist_2.name)
         expect(page).to have_content(@artist_3.name)
         expect(page).to have_content(@artist_4.name)
+
+        # And next to each of the records I see when it was created
+        
+        expect(page).to have_content(@artist_1.created_at)
+        expect(page).to have_content(@artist_2.created_at)
+        expect(page).to have_content(@artist_3.created_at)
+        expect(page).to have_content(@artist_4.created_at)
       end
+
+      it 'shows artists ordered by recently created' do
+        # As a visitor
+        # When I visit the parent index,
+        # I see that records are ordered by most recently created first
+        
+        visit "/artists"
+        save_and_open_page
+        expect(@artist_4.name).to appear_before(@artist_3.name)
+        expect(@artist_3.name).to appear_before(@artist_2.name)
+        expect(@artist_2.name).to appear_before(@artist_1.name)
+        expect(@artist_1.name).to_not appear_before(@artist_4.name)
+      end
+      
     end
 
     describe 'when I visit /artists/:id' do
