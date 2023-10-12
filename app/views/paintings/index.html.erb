@@ -1,0 +1,6 @@
+<h1>All Paintings</h1>
+<% @paintings.each do |painting| %>
+  <p>Painting name: <%= painting.name %></p>
+  <p>Year painted: <%= painting.year_painted %></p>
+  <p>Oil painting?: <%= painting.oil_painting %></p>
+<% end %>
