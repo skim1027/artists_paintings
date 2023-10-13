@@ -33,6 +33,15 @@ RSpec.describe 'paintings index page', type: :feature do
         expect(page).to have_content(@painting_4.year_painted)
         expect(page).to have_content(@painting_4.oil_painting)
       end
+
+      it 'shows the artists index link' do
+        # When I visit any page on the site
+        # Then I see a link at the top of the page that takes me to the Parent Index
+
+        visit "/paintings"
+        expect(page).to have_link("Artists")
+        expect("Artists").to appear_before("All Paintings")
+      end
     end
   end
 end
