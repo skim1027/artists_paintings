@@ -37,6 +37,15 @@ RSpec.describe 'paintings index page', type: :feature do
         expect(page).to have_link("Paintings")
         expect("Paintings").to appear_before("Painting Info")
       end
+
+      it 'shows the artists index link' do
+        # When I visit any page on the site
+        # Then I see a link at the top of the page that takes me to the Parent Index
+
+        visit "/paintings/#{@painting_1.id}"
+        expect(page).to have_link("Artists")
+        expect("Artists").to appear_before("Painting Info")
+      end
     end
   end
 
