@@ -42,6 +42,16 @@ RSpec.describe 'artists index page', type: :feature do
         expect(@artist_2.name).to appear_before(@artist_1.name)
         expect(@artist_1.name).to_not appear_before(@artist_4.name)
       end
+
+      it 'shows paintings index link' do
+        # As a visitor
+        # When I visit any page on the site
+        # Then I see a link at the top of the page that takes me to the Child Index
+
+        visit "/artists"
+        expect(page).to have_link("Paintings")
+        expect("Paintings").to appear_before("All Artists")
+      end
     end
   end
 end

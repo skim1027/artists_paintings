@@ -35,6 +35,15 @@ RSpec.describe 'artist show page', type: :feature do
         expect(@artist_1.number_of_paintings).to eq(2)
         expect(page).to have_content("Number of paintings for Leonardo da Vinci: 2")
       end
+
+      it 'shows the paintings index link' do
+        # When I visit any page on the site
+        # Then I see a link at the top of the page that takes me to the Child Index
+
+        visit "/artists/#{@artist_1.id}"
+        expect(page).to have_link("Paintings")
+        expect("Paintings").to appear_before("Artist Info")
+      end
     end
   end
 end

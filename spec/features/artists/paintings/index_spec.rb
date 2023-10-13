@@ -8,6 +8,7 @@ RSpec.describe 'artists index page', type: :feature do
     @painting_2 = @artist_1.paintings.create!(name: "The Last Supper", year_painted: 1498, oil_painting: false)
     @painting_3 = @artist_2.paintings.create!(name: "La Toilette", year_painted: 1886, oil_painting: false)
   end
+  
   describe 'as a user' do
     describe 'when I visit /artists/:artist_id/paintings' do
       it 'shows paintings belonging to the artist' do
@@ -24,6 +25,15 @@ RSpec.describe 'artists index page', type: :feature do
         expect(page).to have_content(@painting_2.year_painted)
         expect(page).to have_content(@painting_2.oil_painting)
         expect(page).to_not have_content(@painting_3.name)
+      end
+
+      it 'shows the paintings index link' do
+        # When I visit any page on the site
+        # Then I see a link at the top of the page that takes me to the Child Index
+
+        visit "/artists/#{@artist_1.id}/paintings"
+        expect(page).to have_link("Paintings")
+        expect("Paintings").to appear_before("Artist's Paintings")
       end
     end
   end

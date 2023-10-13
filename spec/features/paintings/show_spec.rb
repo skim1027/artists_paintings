@@ -15,24 +15,29 @@ RSpec.describe 'paintings index page', type: :feature do
   end
 
   describe 'as a user' do
-    describe 'when I visit /paintings' do  
-      it 'shows each painting in the systems with attributes' do
+    describe 'when I visit /paintings/:id' do
+      it 'shows the paintings with that ID an attributes' do
         # As a visitor
-        # When I visit '/child_table_name'
-        # Then I see each Child in the system including the Child's attributes
+        # When I visit '/child_table_name/:id'
+        # Then I see the child with that id including the child's attributes
         # (data from each column that is on the child table)
-        visit "/paintings"
-        expect(page).to have_content("All Paintings")
+
+        visit "/paintings/#{@painting_1.id}"
         expect(page).to have_content(@painting_1.name)
         expect(page).to have_content(@painting_1.year_painted)
         expect(page).to have_content(@painting_1.oil_painting)
-        expect(page).to have_content(@painting_2.name)
-        expect(page).to have_content(@painting_2.year_painted)
-        expect(page).to have_content(@painting_2.oil_painting)
-        expect(page).to have_content(@painting_4.name)
-        expect(page).to have_content(@painting_4.year_painted)
-        expect(page).to have_content(@painting_4.oil_painting)
+        expect(page).to_not have_content(@painting_2.name)
+      end
+
+      it 'shows the paintings index link' do
+        # When I visit any page on the site
+        # Then I see a link at the top of the page that takes me to the Child Index
+
+        visit "/paintings/#{@painting_1.id}"
+        expect(page).to have_link("Paintings")
+        expect("Paintings").to appear_before("Painting Info")
       end
     end
   end
+
 end
