@@ -53,6 +53,15 @@ RSpec.describe 'artist show page', type: :feature do
         expect(page).to have_link("Artists")
         expect("Artists").to appear_before("Artist Info")
       end
+
+      it 'shows the artist painting link' do
+        # When I visit a parent show page ('/parents/:id')
+        # Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')     
+
+        visit "/artists/#{@artist_1.id}"
+        expect(page).to have_link("Artist's Paintings")
+        expect("Artist's Paintings").to appear_before("Artist Info")
+      end
     end
   end
 end

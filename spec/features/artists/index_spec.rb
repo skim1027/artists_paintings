@@ -52,6 +52,8 @@ RSpec.describe 'artists index page', type: :feature do
         expect(page).to have_link("Paintings")
         expect("Paintings").to appear_before("All Artists")
       end
+
+      
     end
   end
 end
