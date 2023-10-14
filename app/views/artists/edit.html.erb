@@ -1,0 +1,12 @@
+<%= form_with url: "/artists/#{@artist.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :year_born %>
+  <%= form.text_field :year_born %>
+  <%= form.label :country %>
+  <%= form.text_field :country %>
+  <%= form.label :alive %>
+  <%= form.text_field :alive %>
+
+  <%= form.submit "Update Artist" %>
+<% end %>

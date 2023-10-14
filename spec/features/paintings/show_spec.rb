@@ -15,7 +15,7 @@ RSpec.describe 'paintings index page', type: :feature do
   end
 
   describe 'as a user' do
-    describe 'when I visit /paintings/:id' do
+    describe 'when I visit /paintings/:painting_id' do
       it 'shows the paintings with that ID an attributes' do
         # As a visitor
         # When I visit '/child_table_name/:id'
