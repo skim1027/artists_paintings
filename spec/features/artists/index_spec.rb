@@ -53,7 +53,13 @@ RSpec.describe 'artists index page', type: :feature do
         expect("Paintings").to appear_before("All Artists")
       end
 
-      
+      it 'shows the link to create New Artist' do
+        # When I visit the Parent Index page
+        # Then I see a link to create a new Parent record, "New Parent"
+
+        visit "/artists"
+        expect(page).to have_link("New Artist")
+      end
     end
   end
 end

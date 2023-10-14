@@ -3,3 +3,5 @@
 <% @artists.each do |artist| %>
   <p>Artist: <%= artist.name %> Created at: <%= artist.created_at %></p>
 <% end %>
+
+<%= link_to "New Artist", "/artists/new" %>
