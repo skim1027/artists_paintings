@@ -11,7 +11,14 @@ RSpec.describe 'editing artist', type: :feature do
 
   describe 'as a user' do
     describe 'the Artist edit' do
-      it 'allows you to click the link' do
+      it 'allows you to edit artist from index page' do
+        visit "/artists"
+        click_link("Edit #{@artist_1.name}")
+        expect(current_path).to eq("/artists/#{@artist_1.id}/edit")
+        expect(current_path).to_not eq("/artists")
+      end
+      
+      it 'allows you to edit artist from specific artist page' do
         # When I click this link
         # Then I am taken to '/parents/new' where I  see a form for a new parent record
         visit "/artists/#{@artist_1.id}"
