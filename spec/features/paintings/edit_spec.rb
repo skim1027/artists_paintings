@@ -18,7 +18,6 @@ RSpec.describe 'editing painting', type: :feature do
         # I should be taken to that parent's edit page where I can update its information just like in User Story 12
 
         visit "/paintings"
-        save_and_open_page
         click_link("Update Mona")
         expect(current_path).to eq("/paintings/#{@painting_1.id}/edit")
         expect(current_path).to_not eq("/paintings")

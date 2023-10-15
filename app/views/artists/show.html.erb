@@ -18,3 +18,5 @@
   <td><%= link_to "Edit #{@artist.name}", "/artists/#{@artist.id}/edit", method: :get %> </td>
 </tr>
 </table>
+
+<p><%= link_to "Delete #{@artist.name}", "/artists/#{@artist.id}", method: :delete %></p>
