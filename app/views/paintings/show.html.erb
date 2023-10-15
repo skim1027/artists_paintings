@@ -3,4 +3,4 @@
 <p>Painting name: <%= @painting.name %></p>
 <p>Year painted: <%= @painting.year_painted %></p>
 <p>Oil painting?: <%= @painting.oil_painting %></p>
-<p><%= button_to "Update #{@painting.name}", "/paintings/#{@painting.id}/edit", method: :get %></p>
+<p><%= link_to "Update #{@painting.name}", "/paintings/#{@painting.id}/edit", method: :get %></p>

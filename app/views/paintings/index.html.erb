@@ -6,12 +6,14 @@
   <th>Painting Name</th>
   <th>Year Painted</th>
   <th>Oil Painting?</th>
+  <th>Update Painting</th>
 </tr>
 <% @paintings.each do |painting| %>
   <tr>
     <td><%= painting.name %></td>
     <td><%= painting.year_painted %></td>
     <td><%= painting.oil_painting %></td>
+    <td><%= link_to "Update #{painting.name}", "/paintings/#{painting.id}/edit", method: :get %></td>
   </tr>
 <% end %>
 
