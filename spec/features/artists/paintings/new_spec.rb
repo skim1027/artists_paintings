@@ -35,7 +35,6 @@ RSpec.describe 'paintings new creation', type: :feature do
         click_button("Create Painting")
         expect(current_path).to eq("/artists/#{@artist_1.id}/paintings")
         expect(page).to have_content("Lady with an Ermine")
-        save_and_open_page
       end
     end
   end
