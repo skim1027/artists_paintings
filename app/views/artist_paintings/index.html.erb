@@ -5,3 +5,5 @@
 <p>Year painted: <%= paiting.year_painted %></p>
 <p>Oil painting?: <%= paiting.oil_painting %></p>
 <% end %>
+
+<%= link_to "New Painting", "/artists/#{@artist.id}/paintings/new" %>
