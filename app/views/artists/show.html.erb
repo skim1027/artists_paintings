@@ -1,7 +1,20 @@
 <a href="/artists">Artists</a> <a href="/paintings">Paintings</a> <a href="/artists/<%= @artist.id %>/paintings">Artist's Paintings</a>
 <h1>Artist Info</h1>
-<p>Artist: <%= @artist.name %></p>
-<p>Year born: <%= @artist.year_born %></p>
-<p>Country: <%= @artist.country %></p>
-<p>Alive?: <%= @artist.alive %></p>
-<p>Number of paintings for <%= @artist.name %>: <%= @paintings %></p>
+<table>
+<tr>
+  <th>Artist Name</th>
+  <th>Year Born</th>
+  <th>Country</th>
+  <th>Alive?</th>
+  <th># of Paintings</th>
+  <th>Edit Artist</th>
+</tr>
+<tr>
+  <td><%= @artist.name %></td>
+  <td><%= @artist.year_born %></td>
+  <td><%= @artist.country %></td>
+  <td><%= @artist.alive %></td>
+  <td><%= @paintings %></td>
+  <td><%= link_to "Edit #{@artist.name}", "/artists/#{@artist.id}/edit", method: :get %> </td>
+</tr>
+</table>
