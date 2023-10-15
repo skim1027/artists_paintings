@@ -4,12 +4,14 @@
 <tr>
   <th>Artist Name</th>
   <th>Created at</th>
+  <th>Edit Artist</th>
 </tr>
 
 <% @artists.each do |artist| %>
   <tr>
     <td><%= artist.name %> </td>
     <td><%= artist.created_at %> </td>
+     <td><%= link_to "Edit #{artist.name}", "/artists/#{artist.id}/edit", method: :get %> </td>
   </tr>
 <% end %>
 </table>
