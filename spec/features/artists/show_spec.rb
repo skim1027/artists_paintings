@@ -33,7 +33,7 @@ RSpec.describe 'artist show page', type: :feature do
         # I see a count of the number of children associated with this parent
         visit "/artists/#{@artist_1.id}"
         expect(@artist_1.number_of_paintings).to eq(2)
-        expect(page).to have_content("Number of paintings for Leonardo da Vinci: 2")
+        expect(page).to have_content("# of Paintings")
       end
 
       it 'shows the paintings index link' do

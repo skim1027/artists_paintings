@@ -14,8 +14,8 @@ RSpec.describe 'editing artist', type: :feature do
       it 'allows you to click the link' do
         # When I click this link
         # Then I am taken to '/parents/new' where I  see a form for a new parent record
-        visit "/artists"
-        click_button("Edit #{@artist_1.name}")
+        visit "/artists/#{@artist_1.id}"
+        click_link("Edit #{@artist_1.name}")
         expect(current_path).to eq("/artists/#{@artist_1.id}/edit")
         expect(current_path).to_not eq("/artists")
       end
@@ -23,16 +23,15 @@ RSpec.describe 'editing artist', type: :feature do
       it 'Create Artist and return to /artists' do
         # When I fill out the form with a new parent's attributes:
         # And I click the button "Create Parent" to submit the form
-        visit '/artists' 
+        visit "/artists/#{@artist_5.id}" 
         expect(page).to have_content("Paul Kee")
-        click_button("Edit Paul Kee")
-
+        click_link("Edit Paul Kee")
         fill_in("Name", with: "Paul Klee")
         fill_in("Year born", with: 1879)
         fill_in("Country", with: "Germany")
         fill_in("Alive", with: false)
         click_button("Update Artist")
-
+        
         expect(current_path).to eq("/artists")
         expect(current_path).to_not eq("/artists/new")
         expect(page).to have_content("Paul Klee")
