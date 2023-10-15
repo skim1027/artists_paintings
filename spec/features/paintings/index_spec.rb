@@ -16,19 +16,24 @@ RSpec.describe 'paintings index page', type: :feature do
 
   describe 'as a user' do
     describe 'when I visit /paintings' do  
-      it 'shows each painting in the systems with attributes' do
+      it 'shows each painting in the systems with attributes only when the oil_painting is true' do
         # As a visitor
         # When I visit '/child_table_name'
         # Then I see each Child in the system including the Child's attributes
         # (data from each column that is on the child table)
+        
+        # US15 As a visitor
+        # When I visit the child index
+        # Then I only see records where the boolean column is `true`
+
         visit "/paintings"
         expect(page).to have_content("All Paintings")
         expect(page).to have_content(@painting_1.name)
         expect(page).to have_content(@painting_1.year_painted)
         expect(page).to have_content(@painting_1.oil_painting)
-        expect(page).to have_content(@painting_2.name)
-        expect(page).to have_content(@painting_2.year_painted)
-        expect(page).to have_content(@painting_2.oil_painting)
+        # expect(page).to have_content(@painting_2.name)
+        # expect(page).to have_content(@painting_2.year_painted)
+        # expect(page).to have_content(@painting_2.oil_painting)
         expect(page).to have_content(@painting_4.name)
         expect(page).to have_content(@painting_4.year_painted)
         expect(page).to have_content(@painting_4.oil_painting)

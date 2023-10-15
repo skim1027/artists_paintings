@@ -1,6 +1,6 @@
 class PaintingsController < ApplicationController
   def index
-    @paintings = Painting.all
+    @paintings = Painting.where(oil_painting: :true)
   end
 
   def show
