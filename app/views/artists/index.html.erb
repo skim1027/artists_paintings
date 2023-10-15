@@ -1,7 +1,18 @@
 <a href="/paintings">Paintings</a>
 <h1>All Artists</h1>
-<% @artists.each do |artist| %>
-  <p>Artist: <%= artist.name %> Created at: <%= artist.created_at %> <%= button_to "Edit #{artist.name}", "/artists/#{artist.id}/edit", method: :get %></p> 
-<% end %>
+<table>
+<tr>
+  <th>Artist Name</th>
+  <th>Created at</th>
+  <th>Edit Link</th>
+</tr>
 
+<% @artists.each do |artist| %>
+  <tr>
+    <td><%= artist.name %> </td>
+    <td><%= artist.created_at %> </td>
+    <td><%= button_to "Edit #{artist.name}", "/artists/#{artist.id}/edit", method: :get %> </td>
+  </tr>
+<% end %>
+</table>
 <%= link_to "New Artist", "/artists/new" %>

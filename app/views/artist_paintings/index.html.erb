@@ -1,9 +1,20 @@
 <a href="/artists">Artists</a> <a href="/paintings">Paintings</a>
 <h1>Artist's Paintings</h1>
-<% @paintings.each do |paiting|  %>
-<p>Painting name: <%= paiting.name %></p>
-<p>Year painted: <%= paiting.year_painted %></p>
-<p>Oil painting?: <%= paiting.oil_painting %></p>
-<% end %>
 
-<%= link_to "New Painting", "/artists/#{@artist.id}/paintings/new" %>
+<table>
+<tr>
+  <th>Artist Name</th>
+  <th>Year Painted</th>
+  <th>Oil Painting?</th>
+</tr>
+<% @paintings.each do |painting|  %>
+  <tr>
+    <td><%= painting.name %></td>
+    <td><%= painting.year_painted %><td>
+    <td><%= painting.oil_painting %></td>
+  </tr>
+<% end %>
+</table>
+<p><%= link_to "New Painting", "/artists/#{@artist.id}/paintings/new" %></p>
+
+<p><%= link_to "Sort by Name", :order => "name" %></p>

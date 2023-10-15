@@ -1,7 +1,20 @@
 <a href="/artists">Artists</a>
 <h1>All Paintings</h1>
+
+<table>
+<tr>
+  <th>Painting Name</th>
+  <th>Year Painted</th>
+  <th>Oil Painting?</th>
+</tr>
 <% @paintings.each do |painting| %>
-  <p>Painting name: <%= painting.name %></p>
-  <p>Year painted: <%= painting.year_painted %></p>
-  <p>Oil painting?: <%= painting.oil_painting %></p>
+  <tr>
+    <td><%= painting.name %></td>
+    <td><%= painting.year_painted %></td>
+    <td><%= painting.oil_painting %></td>
+  </tr>
 <% end %>
+
+</table>
+
+
