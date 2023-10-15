@@ -1,7 +1,11 @@
 class ArtistPaintingsController < ApplicationController
   def index
     @artist = Artist.find(params[:artist_id])
-    @paintings = @artist.paintings
+    if (params[:order] == "name")
+      @paintings = @artist.paintings.order(name: :asc)
+    else
+      @paintings = @artist.paintings
+    end
   end
 
   def new
