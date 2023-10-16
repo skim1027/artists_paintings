@@ -9,6 +9,8 @@ RSpec.describe 'artists index page', type: :feature do
     @painting_4 = @artist_2.paintings.create!(name: "La Toilette", year_painted: 1886, oil_painting: false)
     @painting_5= @artist_2.paintings.create!(name: "Blue Dancers", year_painted: 1897, oil_painting: false)
     @painting_6= @artist_2.paintings.create!(name: "Mary Cassatt Seated, Holding Cards", year_painted: 1884, oil_painting: true)
+    @painting_7 = @artist_2.paintings.create!(name: "The Ballet Class", year_painted: 1874, oil_painting: true)
+    @painting_8 = @artist_2.paintings.create!(name: "After the Bath, Woman drying herself", year_painted: 1895, oil_painting: true)
   end
   
   describe 'as a user' do
@@ -63,6 +65,24 @@ RSpec.describe 'artists index page', type: :feature do
         expect(@painting_5.name).to appear_before(@painting_4.name)
         expect(@painting_4.name).to appear_before(@painting_6.name)
         expect(@painting_6.name).to_not appear_before(@painting_5.name)
+      end
+
+      it 'returns the record with paintings greater than year typed' do
+        # When I visit the Parent's children Index Page
+        # I see a form that allows me to input a number value
+        # When I input a number value and click the submit button that reads 'Only return records with more than `number` of `column_name`'
+        # Then I am brought back to the current index page with only the records that meet that threshold shown.
+
+        visit "/artists/#{@artist_2.id}/paintings"
+        expect(page).to have_content("The Ballet Class")
+        expect(page).to have_content("Mary Cassatt Seated, Holding Cards")
+        save_and_open_page
+        click_button("Submit")
+        expect(page).to_not have_content("The Ballet Class")
+        expect(page).to_not have_content("Mary Cassatt Seated, Holding Cards")
+        expect(page).to have_content("La Toilette")
+        expect(page).to have_content("Blue Dancers")
+        expect(page).to have_content("After the Bath, Woman drying herself")
       end
     end
   end

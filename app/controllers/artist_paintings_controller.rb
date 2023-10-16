@@ -1,10 +1,11 @@
 class ArtistPaintingsController < ApplicationController
   def index
     @artist = Artist.find(params[:artist_id])
-    @paintings = @artist.paintings
-    if (params[:order] == "name")
-      @paintings = @artist.paintings.order(name: :asc)
-    end
+    @paintings = @artist.paintings.search(params[:search])
+    # @paintings = @artist.paintings
+    # if (params[:order] == "name")
+    #   @paintings = @artist.paintings.order(name: :asc)
+    # end
   end
 
   def new
@@ -19,5 +20,9 @@ class ArtistPaintingsController < ApplicationController
 
   def painting_params
     params.permit(:name, :year_painted, :oil_painting)
+  end
+
+  def paintings_search_params
+    params.require(:painting).permit(:name, :year_painted, :oil_painting, :search)
   end
 end
