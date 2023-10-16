@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   get "/paintings/:painting_id/edit", to: 'paintings#edit'
   get "/paintings/:painting_id", to: "paintings#show"
   patch "/paintings/:painting_id", to: 'paintings#update'
-  
+  delete "/paintings/:painting_id", to: 'paintings#destroy'
+
   get "/artists/:artist_id/edit", to: "artists#edit"
   get "/artists/:artist_id/paintings/new", to: "artist_paintings#new"
   get "/artists/:artist_id/paintings", to: "artist_paintings#index"

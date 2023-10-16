@@ -17,6 +17,11 @@ class PaintingsController < ApplicationController
     redirect_to "/paintings/#{@painting.id}"
   end
 
+  def destroy
+    Painting.find(params[:painting_id]).destroy
+    redirect_to "/paintings"
+  end
+
   def painting_params
     params.permit(:name, :year_painted, :oil_painting)
   end

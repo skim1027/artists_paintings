@@ -28,7 +28,6 @@ RSpec.describe 'delete artist', type: :feature do
       
       it 'allows you to delete artist from index page' do
         visit '/artists'
-        save_and_open_page
         click_link("Delete #{@artist_1.name}")
         expect(current_path).to eq("/artists")
         expect(page).to_not have_content("Leonardo da Vinci")
