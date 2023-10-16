@@ -20,10 +20,17 @@ RSpec.describe 'delete artist', type: :feature do
         # and I am redirected to the parent index page where I no longer see this parent
 
         visit "/artists/#{@artist_1.id}"
-        save_and_open_page
         click_link("Delete #{@artist_1.name}")
         expect(current_path).to eq("/artists")
         expect(current_path).to_not eq("/artists/#{@artist_1.id}")
+        expect(page).to_not have_content("Leonardo da Vinci")
+      end
+      
+      it 'allows you to delete artist from index page' do
+        visit '/artists'
+        save_and_open_page
+        click_link("Delete #{@artist_1.name}")
+        expect(current_path).to eq("/artists")
         expect(page).to_not have_content("Leonardo da Vinci")
       end
       
