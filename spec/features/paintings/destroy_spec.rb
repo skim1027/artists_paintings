@@ -22,10 +22,22 @@ RSpec.describe 'delete paintings', type: :feature do
         # and I am redirected to the child index page where I no longer see this child
 
         visit "/paintings/#{@painting_1.id}"
-        save_and_open_page
         click_link("Delete #{@painting_1.name}")
         expect(current_path).to eq("/paintings")
         expect(page).to_not have_content("Mona Lisa")
+      end
+
+      it 'allows you to delete paintings from the index page' do
+        # As a visitor
+        # When I visit the `child_table_name` index page or a parent `child_table_name` index page
+        # Next to every child, I see a link to delete that child
+        # When I click the link
+        # I should be taken to the `child_table_name` index page where I no longer see that child
+
+        visit "/paintings"
+        click_link("Delete #{@painting_4.name}")
+        expect(current_path).to eq("/paintings")
+        expect(page).to_not have_content("Blue Dancers")
       end
     end
   end
