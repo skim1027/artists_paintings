@@ -20,7 +20,7 @@
 <p><%= link_to "Sort by Name", :order => "name" %></p>
 
 <%= form_tag("/artists/#{@artist.id}/paintings", method: :get) do %>
-  <%= label_tag("Painted After (year)") %>
+  <%= label_tag("Painted after (year)") %>
   <%= text_field_tag(:search, params[:search]) %>
   <%= submit_tag("Submit") %>
 <% end %>

@@ -9,19 +9,4 @@ class Artist < ApplicationRecord
   def number_of_paintings
     self.paintings.count
   end
-
-  def self.search(search)
-    
-    if search
-      select_paintings = self.paintings.find_by(year_painted: search) 
-      if select_paintings
-        require 'pry'; binding.pry
-        self.where("year_painted")
-      end
-    elsif (params[:order] == "name")
-
-    else
-
-    end
-  end
 end

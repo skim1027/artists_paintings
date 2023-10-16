@@ -77,6 +77,7 @@ RSpec.describe 'artists index page', type: :feature do
         expect(page).to have_content("The Ballet Class")
         expect(page).to have_content("Mary Cassatt Seated, Holding Cards")
         save_and_open_page
+        fill_in("search", with: 1885)
         click_button("Submit")
         expect(page).to_not have_content("The Ballet Class")
         expect(page).to_not have_content("Mary Cassatt Seated, Holding Cards")
