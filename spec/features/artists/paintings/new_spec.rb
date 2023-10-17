@@ -21,6 +21,9 @@ RSpec.describe 'paintings new creation', type: :feature do
         # Then I see a link to add a new adoptable child for that parent "Create Child" When I click the link I am taken to '/parents/:parent_id/child_table_name/new' where I see a form to add a new adoptable child
 
         visit "/artists/#{@artist_1.id}/paintings"
+        expect(page).to have_link("Artists")
+        expect(page).to have_link("Paintings")
+        expect(page).to have_link("New Painting")
         click_link("New Painting")
 
         expect(current_path).to eq("/artists/#{@artist_1.id}/paintings/new")
@@ -34,6 +37,16 @@ RSpec.describe 'paintings new creation', type: :feature do
         fill_in("Oil painting", with: true)
         click_button("Create Painting")
         expect(current_path).to eq("/artists/#{@artist_1.id}/paintings")
+        expect(page).to have_content("Lady with an Ermine")
+      end
+
+      it 'creates paintings and also add to all paintings' do
+        visit "/artists/#{@artist_1.id}/paintings/new"
+        fill_in("Name", with: "Lady with an Ermine")
+        fill_in("Year painted", with: 1491)
+        fill_in("Oil painting", with: true)
+        click_button("Create Painting")
+        visit "/paintings"
         expect(page).to have_content("Lady with an Ermine")
       end
     end

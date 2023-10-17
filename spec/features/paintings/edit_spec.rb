@@ -43,15 +43,22 @@ RSpec.describe 'editing painting', type: :feature do
         visit "/paintings/#{@painting_1.id}"
         expect(page).to have_content("Mona")
         click_link("Update Mona")
-        
         fill_in("Name", with: "Mona Lisa" )
         fill_in("Year painted", with: 1491)
         fill_in("Oil painting", with: true)
+        expect(page).to have_button("Update Painting")
         click_button("Update Painting")
-
+        
         expect(current_path).to eq("/paintings/#{@painting_1.id}")
         expect(current_path).to_not eq("/paintings/#{@painting_1.id}/edit")
         expect(page).to have_content("Mona Lisa")
+      end
+
+      it 'has a link to /artists and /paintings' do
+        visit "/paintings/#{@painting_1.id}"
+        expect(page).to have_content("Update Painting")
+        expect(page).to have_link("Artists")
+        expect(page).to have_link("Paintings")
       end
     end
   end

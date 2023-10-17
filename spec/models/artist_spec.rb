@@ -31,5 +31,6 @@ RSpec.describe Artist, type: :model do
     it 'gives you search painting' do
       expect(@artist_1.search(1500)).to eq([@painting_1])
     end
+
   end
 end

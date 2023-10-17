@@ -1,11 +1,14 @@
+<a href="/artists">Artists</a> <a href="/paintings">Paintings</a>
+
+<h1 style="font-family:verdana">Create Painting</h1>
 <%= form_with url: "/artists/#{@artist.id}/paintings", method: :post, local: true do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %>
-  <%= form.label :year_painted %>
-  <%= form.text_field :year_painted %>
+  <p><%= form.label :year_painted %>
+  <%= form.text_field :year_painted %></p>
   <%= form.label :oil_painting %>
   <%= form.text_field :oil_painting %>
 
-  <%= form.submit "Create Painting" %>
+  <p><%= form.submit "Create Painting" %></p>
 
 <% end %>

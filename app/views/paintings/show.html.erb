@@ -1,9 +1,19 @@
 <a href="/artists">Artists</a> <a href="/paintings">Paintings</a>
-<h1>Painting Info</h1>
-<p>Painting name: <%= @painting.name %></p>
-<p>Year painted: <%= @painting.year_painted %></p>
-<p>Oil painting?: <%= @painting.oil_painting %></p>
-<p><%= link_to "Update #{@painting.name}", "/paintings/#{@painting.id}/edit", method: :get %></p>
+<h1 style="font-family:verdana">Painting Info</h1>
+<table id="table">
+<tr>
+  <th>Painting Name</th>
+  <th>Year Painted</th>
+  <th>Oil Painting?</th>
+  <th>Update Painting</th>
+  <th>Delete Painting</th>
+</tr>
 
-
-<p><%= link_to "Delete #{@painting.name}", "/paintings/#{@painting.id}", data: { turbo_method: :delete }%></p>
+  <tr>
+<td><%= @painting.name %></td>
+<td><%= @painting.year_painted %></td>
+<td><%= @painting.oil_painting %></td>
+<td><%= link_to "Update #{@painting.name}", "/paintings/#{@painting.id}/edit", method: :get %></td>
+<td><%= link_to "Delete #{@painting.name}", "/paintings/#{@painting.id}", data: { turbo_method: :delete }%></td>
+  </tr>
+</table>

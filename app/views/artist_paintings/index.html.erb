@@ -1,7 +1,7 @@
 <a href="/artists">Artists</a> <a href="/paintings">Paintings</a>
-<h1>Artist's Paintings</h1>
+<h1 style="font-family:verdana">Artist's Paintings</h1>
 
-<table>
+<table id="table">
 <tr>
   <th>Artist Name</th>
   <th>Year Painted</th>
@@ -15,9 +15,7 @@
   </tr>
 <% end %>
 </table>
-<p><%= link_to "New Painting", "/artists/#{@artist.id}/paintings/new" %></p>
-
-<p><%= link_to "Sort by Name", :order => "name" %></p>
+<p><%= link_to "New Painting", "/artists/#{@artist.id}/paintings/new" %> <%= link_to "Sort by Name", :order => "name" %></p>
 
 <%= form_tag("/artists/#{@artist.id}/paintings", method: :get) do %>
   <%= label_tag("Painted after (year)") %>

@@ -14,6 +14,8 @@ RSpec.describe 'creating new artist', type: :feature do
         # When I click this link
         # Then I am taken to '/parents/new' where I  see a form for a new parent record
         visit "/artists"
+        expect(page).to have_link("Paintings")
+        expect(page).to have_link("New Artist")
         click_link("New Artist")
 
         expect(current_path).to eq("/artists/new")
@@ -24,6 +26,9 @@ RSpec.describe 'creating new artist', type: :feature do
         # When I fill out the form with a new parent's attributes:
         # And I click the button "Create Parent" to submit the form
         visit "/artists/new"
+        expect(page).to have_link("Artists")
+        expect(page).to have_link("Paintings")
+        expect(page).to have_button("Create Artist")
         fill_in("Name", with: "Paul Klee")
         fill_in("Year born", with: 1879)
         fill_in("Country", with: "Germany")
