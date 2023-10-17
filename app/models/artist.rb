@@ -7,23 +7,24 @@ class Artist < ApplicationRecord
   validates :alive, inclusion: [true, false]
   
   def number_of_paintings
-    self.paintings.count
+    paintings.count
   end
 
-  def sort
-    self.paintings.order(name: :asc)
+  def painting_sort
+    paintings.order(name: :asc)
   end
 
-  def search(year)
+  def painting_search(year)
     # 
-    self.paintings.where("year_painted > ?", year)
+    paintings.where("year_painted > ?", year)
   end
 
-  def order_by_created
-    self.order(created_at: :desc)
+  def self.order_by_created
+    order(created_at: :desc)
   end
 
-  def order_by_paintings
-    self.order(num_paints: :desc)
+  def self.order_by_paintings
+    joins(:paintings).group(:id).order("COUNT(paintings.id) DESC")
+
   end
 end

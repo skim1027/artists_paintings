@@ -25,11 +25,11 @@ RSpec.describe Artist, type: :model do
     end
 
     it 'gives you sorted paintings' do
-      expect(@artist_1.sort).to eq([@painting_1, @painting_2])
+      expect(@artist_1.painting_sort).to eq([@painting_1, @painting_2])
     end
 
     it 'gives you search painting' do
-      expect(@artist_1.search(1500)).to eq([@painting_1])
+      expect(@artist_1.painting_search(1500)).to eq([@painting_1])
     end
 
   end
