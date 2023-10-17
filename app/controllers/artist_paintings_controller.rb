@@ -23,8 +23,4 @@ class ArtistPaintingsController < ApplicationController
   def painting_params
     params.permit(:name, :year_painted, :oil_painting)
   end
-
-  def paintings_search_params
-    params.require(:painting).permit(:name, :year_painted, :oil_painting, :search)
-  end
 end

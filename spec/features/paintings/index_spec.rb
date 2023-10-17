@@ -47,6 +47,13 @@ RSpec.describe 'paintings index page', type: :feature do
         expect(page).to have_link("Artists")
         expect("Artists").to appear_before("All Paintings")
       end
+
+      it 'shows the link to each painting and take you to the painting' do
+        visit "/paintings"
+        expect(page).to have_link("Mona Lisa")
+        click_link("Mona Lisa")
+        expect(current_path).to eq("/paintings/#{@painting_1.id}")
+      end
     end
   end
 end

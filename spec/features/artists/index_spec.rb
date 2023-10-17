@@ -60,6 +60,13 @@ RSpec.describe 'artists index page', type: :feature do
         visit "/artists"
         expect(page).to have_link("New Artist")
       end
+
+      it 'shows the link to each artist and take you to the artist' do
+        visit "/artists"
+        expect(page).to have_link("Leonardo da Vinci")
+        click_link("Leonardo da Vinci")
+        expect(current_path).to eq("/artists/#{@artist_1.id}")
+      end
     end
   end
 end

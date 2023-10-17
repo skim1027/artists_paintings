@@ -1,12 +1,17 @@
+<a href="/artists">Artists</a> <a href="/paintings">Paintings</a>
+<h1 style="font-family:verdana">Update Artist</h1>
+
+
+
 <%= form_with url: "/artists/#{@artist.id}", method: :patch, local: true do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %>
-  <%= form.label :year_born %>
-  <%= form.text_field :year_born %>
+  <p><%= form.label :year_born %>
+  <%= form.text_field :year_born %></p>
   <%= form.label :country %>
   <%= form.text_field :country %>
-  <%= form.label :alive %>
-  <%= form.text_field :alive %>
+  <p><%= form.label :alive %>
+  <%= form.text_field :alive %></p>
 
-  <%= form.submit "Update Artist" %>
+  <p><%= form.submit "Update Artist" %></p>
 <% end %>

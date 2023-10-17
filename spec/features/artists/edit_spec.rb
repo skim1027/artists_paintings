@@ -43,6 +43,13 @@ RSpec.describe 'editing artist', type: :feature do
         expect(current_path).to_not eq("/artists/new")
         expect(page).to have_content("Paul Klee")
       end
+
+      it 'has links to /artist and /paintings' do
+        visit "/artists/#{@artist_5.id}" 
+        expect(page).to have_content("Edit Artist")
+        expect(page).to have_link("Artists")
+        expect(page).to have_link("Paintings")
+      end
     end
   end
 end
