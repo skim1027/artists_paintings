@@ -19,4 +19,4 @@
 </tr>
 </table>
 
-<p><%= link_to "Delete #{@artist.name}", "/artists/#{@artist.id}", method: :delete %></p>
+<p><%= link_to "Delete #{@artist.name}", "/artists/#{@artist.id}", data: { turbo_method: :delete } %></p>
