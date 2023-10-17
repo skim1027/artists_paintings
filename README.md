@@ -1,24 +1,17 @@
-# README
+# Artists and Paintings (Relational Rails)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+In this project, one-to-many-relationship between artist and paintings is demonstrated as shown in below table: 
 
-Things you may want to cover:
+| Artists                  | Paintings              |
+|:----:                    | :----:                 |
+| id - integer             | id - integer           |
+| name - text              | artist_id - integer    |
+| country - text           | name - text            |
+| year_born - integer      | year_painted - integer |
+| alive - boolean          | oil_paiting - boolean |
+| created_at - timestamp   | created_at - timestamp |
+| updated_at - timestamp   | updated_at - timestamp |
 
-* Ruby version
+Each artist is related to the paintings by the foreign key from paintings.
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
