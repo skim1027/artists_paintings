@@ -9,4 +9,13 @@ class Artist < ApplicationRecord
   def number_of_paintings
     self.paintings.count
   end
+
+  def sort
+    self.paintings.order(name: :asc)
+  end
+
+  def search(year)
+    # 
+    self.paintings.where("year_painted > ?", year)
+  end
 end
