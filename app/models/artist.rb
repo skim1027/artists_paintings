@@ -18,4 +18,12 @@ class Artist < ApplicationRecord
     # 
     self.paintings.where("year_painted > ?", year)
   end
+
+  def order_by_created
+    self.order(created_at: :desc)
+  end
+
+  def order_by_paintings
+    self.order(num_paints: :desc)
+  end
 end

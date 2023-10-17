@@ -1,7 +1,12 @@
 class ArtistsController < ApplicationController
   def index
     @artists = Artist.all
-    @artists = @artists.order(created_at: :desc)
+    if params[:order] == "created_at"
+      require 'pry'; binding.pry
+      @artists.order_by_created
+      elsif params[:order] == "num_paints"
+        @artists.order_by_paintings
+    end
   end
 
   def show

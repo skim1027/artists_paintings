@@ -3,6 +3,7 @@
 <table id="table">
 <tr>
   <th>Artist Name</th>
+  <th>Number of Paintings</th>
   <th>Created at</th>
   <th>Edit Artist</th>
   <th>Delete Artists</th>
@@ -11,6 +12,7 @@
 <% @artists.each do |artist| %>
   <tr>
     <td><%= link_to "#{artist.name}", "/artists/#{artist.id}" %> </td>
+    <td><%= artist.number_of_paintings %> </td>
     <td><%= artist.created_at %> </td>
     <td><%= link_to "Edit #{artist.name}", "/artists/#{artist.id}/edit", method: :get %> </td>
     <td><%= link_to "Delete #{artist.name}", "/artists/#{artist.id}", data: { turbo_method: :delete } %></td>
@@ -18,3 +20,4 @@
 <% end %>
 </table>
 <%= link_to "New Artist", "/artists/new" %>
+<%= link_to "Sort by # of Paintings", :order => "num_paint" %>
