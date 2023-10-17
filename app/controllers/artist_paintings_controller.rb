@@ -3,10 +3,10 @@ class ArtistPaintingsController < ApplicationController
     @artist = Artist.find(params[:artist_id])
     @paintings = @artist.paintings
     if (params[:order] == "name")
-      @paintings = @artist.sort
+      @paintings = @artist.painting_sort
     elsif params[:search] != nil
       year = params[:search].to_i
-      @paintings = @artist.search(year)
+      @paintings = @artist.painting_search(year)
     end
   end
 

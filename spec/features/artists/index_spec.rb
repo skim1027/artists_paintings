@@ -6,6 +6,15 @@ RSpec.describe 'artists index page', type: :feature do
     @artist_2 = Artist.create!(name: "Edgar Degas", year_born: 1834, country: 'France', alive: false)
     @artist_3 = Artist.create!(name: "Yayoi Kusama", year_born: 1929, country: 'Japan', alive: true)
     @artist_4 = Artist.create!(name: "Beatrice Modisett", year_born: 1985, country: 'US', alive: true)
+    @painting_1 = @artist_1.paintings.create!(name: "Mona Lisa", year_painted: 1516, oil_painting: true)
+    @painting_3 = @artist_1.paintings.create!(name: "Vitruvian Man", year_painted: 1490, oil_painting: false)
+    @painting_5= @artist_2.paintings.create!(name: "Blue Dancers", year_painted: 1897, oil_painting: false)
+    @painting_13 = @artist_3.paintings.create!(name: "Flowers", year_painted: 1991, oil_painting: false)
+    @painting_14 = @artist_3.paintings.create!(name: "Pumpkin", year_painted: 1992, oil_painting: false)
+    @painting_15 = @artist_3.paintings.create!(name: "Infinity-Nets", year_painted: 2017, oil_painting: false)
+    @painting_16 = @artist_4.paintings.create!(name: "Pewter Clouds Being to Lighten", year_painted: 2022, oil_painting: false)
+    @painting_17 = @artist_4.paintings.create!(name: "Every Ninth Wave II", year_painted: 2018, oil_painting: true)
+  
   end
   
   describe 'as a user' do
@@ -66,6 +75,23 @@ RSpec.describe 'artists index page', type: :feature do
         expect(page).to have_link("Leonardo da Vinci")
         click_link("Leonardo da Vinci")
         expect(current_path).to eq("/artists/#{@artist_1.id}")
+      end
+
+      it 'shows number of paintings' do
+        visit "/artists"
+        expect(page).to have_content("Number of Paintings")
+      end
+
+      it 'can sort artists by number of paintings' do
+        visit "/artists"
+        expect(@artist_4.name).to appear_before(@artist_3.name)
+        
+        click_link("Sort by # of Paintings")
+
+        expect(current_path).to eq("/artists")
+        expect(@artist_3.name).to appear_before(@artist_1.name)
+        expect(@artist_1.name).to appear_before(@artist_2.name)
+        expect(@artist_2.name).to_not appear_before(@artist_4.name)
       end
     end
   end
